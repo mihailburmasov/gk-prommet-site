@@ -413,6 +413,13 @@ footer.site ul{display:flex;flex-direction:column;gap:10px;}
   flex-wrap:wrap;gap:10px;font-size:.82rem;color:var(--plate-ink-2);
 }
 .footer-bottom a{text-decoration:underline;}
+.footer-bottom-links{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.footer-credit{
+  text-decoration:none!important;
+  color:var(--plate-ink-2);
+  opacity:.7;
+}
+.footer-credit:hover{opacity:1;color:var(--plate-ink);}
 
 /* ===== Floating quote pill ===== */
 #quote-pill{

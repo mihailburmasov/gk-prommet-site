@@ -257,7 +257,9 @@ nav.main a[aria-current="page"]{color:var(--brand);background:var(--surface-2);}
 .prod-card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   padding:26px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;
 }
+.prod-card .cat-footer{margin-top:auto;padding-top:20px;}
 .prod-card h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .made-badge{
   font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.05em;

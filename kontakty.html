@@ -93,6 +93,14 @@
             <label for="f-comment">Что нужно (позиции, размеры, количество)</label>
             <textarea id="f-comment" name="comment" rows="4" placeholder="Например: болт DIN 933 М12×80, 500 шт., оцинкованный"></textarea>
           </div>
+          <div class="field">
+            <label for="f-file">Файл — чертёж, спецификация (необязательно)</label>
+            <div class="file-upload">
+              <label class="btn btn-ghost btn-small" for="f-file">📎 Загрузить файл</label>
+              <input id="f-file" name="file" type="file">
+              <span class="file-upload-name" id="file-upload-name">Файл не выбран</span>
+            </div>
+          </div>
           <label class="consent-row">
             <input type="checkbox" id="f-consent" name="consent" required checked>
             <span>Согласен(на) на обработку персональных данных для ответа на заявку — см. <a href="politika-konfidentsialnosti.html">политику конфиденциальности</a>.</span>

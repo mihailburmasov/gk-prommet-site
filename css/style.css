@@ -379,6 +379,14 @@ nav.main a[aria-current="page"]{color:var(--brand);background:var(--surface-2);}
 .consent-row{display:flex;gap:10px;align-items:flex-start;margin:16px 0;font-size:.84rem;color:var(--ink-2);}
 .consent-row input{margin-top:3px;flex:0 0 auto;}
 .consent-row a{color:var(--ink-2);text-decoration:underline;}
+.file-upload{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.file-upload input[type="file"]{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+.file-upload label.btn{font-size:.85rem;font-weight:700;color:var(--ink);cursor:pointer;}
+.file-upload:focus-within label{outline:2px solid var(--brand);outline-offset:2px;}
+.file-upload-name{font-size:.82rem;color:var(--ink-2);}
 .form-note{font-size:.8rem;color:var(--ink-2);margin-top:10px;}
 .form-status{font-size:.86rem;margin-top:10px;font-weight:700;}
 .form-status.ok{color:#1F7A4D;}

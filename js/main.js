@@ -131,6 +131,15 @@
   var form = document.getElementById('quote-form');
   if (form) {
     var statusEl = document.getElementById('form-status');
+
+    var fileInput = document.getElementById('f-file');
+    var fileNameEl = document.getElementById('file-upload-name');
+    if (fileInput && fileNameEl) {
+      fileInput.addEventListener('change', function () {
+        fileNameEl.textContent = fileInput.files.length ? fileInput.files[0].name : 'Файл не выбран';
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = form.name.value.trim();

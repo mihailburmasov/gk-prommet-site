@@ -189,6 +189,44 @@
     }
   }
 
+  /* ---- Reviews carousel (only present on otzyvy.html) ---- */
+  var carousel = document.getElementById('review-carousel');
+  if (carousel) {
+    var pages = Array.prototype.slice.call(carousel.querySelectorAll('.review-page'));
+    var dots = Array.prototype.slice.call(carousel.querySelectorAll('.review-dot'));
+    var current = 0;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timer = null;
+
+    function show(index) {
+      current = (index + pages.length) % pages.length;
+      pages.forEach(function (p, i) { p.classList.toggle('is-active', i === current); });
+      dots.forEach(function (d, i) {
+        d.classList.toggle('is-active', i === current);
+        d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      });
+    }
+
+    function startAutoplay() {
+      if (reduceMotion || pages.length < 2) return;
+      stopAutoplay();
+      timer = setInterval(function () { show(current + 1); }, 5000);
+    }
+    function stopAutoplay() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { show(i); startAutoplay(); });
+    });
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', startAutoplay);
+
+    startAutoplay();
+  }
+
   /* ---- Smooth scroll for same-page anchors ---- */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (ev) {

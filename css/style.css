@@ -388,8 +388,27 @@ nav.main a[aria-current="page"]{color:var(--brand);background:var(--surface-2);}
 .form-status.ok{color:#1F7A4D;}
 .form-status.err{color:var(--danger);}
 
-/* ===== Reviews placeholder ===== */
-.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+/* ===== Reviews carousel ===== */
+/* All pages stack in the same grid cell so the tallest one sets the
+   carousel's height; is-active fades in on top while the rest wait
+   invisibly underneath — no layout jump when the page changes. */
+.review-carousel{display:grid;}
+.review-page{
+  grid-area:1/1;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;
+  opacity:0;visibility:hidden;transition:opacity .5s ease;
+}
+.review-page.is-active{opacity:1;visibility:visible;}
+@media (prefers-reduced-motion:reduce){
+  .review-page{transition:none;}
+}
+.review-dots{grid-area:2/1;display:flex;justify-content:center;gap:8px;margin-top:20px;}
+.review-dot{
+  width:9px;height:9px;padding:0;border-radius:50%;border:none;background:var(--line);
+  cursor:pointer;transition:background-color .2s ease,transform .2s ease;
+}
+.review-dot:hover{background:var(--ink-2);}
+.review-dot.is-active{background:var(--brand);transform:scale(1.2);}
+
 .review-placeholder{
   border:1px dashed var(--line);border-radius:var(--radius);padding:24px;
   display:flex;flex-direction:column;gap:10px;background:var(--surface);

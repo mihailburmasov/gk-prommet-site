@@ -372,6 +372,24 @@ nav.main a[aria-current="page"]{color:var(--brand);background:var(--surface-2);}
 .form-status.ok{color:#1F7A4D;}
 .form-status.err{color:var(--danger);}
 
+/* ===== Reviews placeholder ===== */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+.review-placeholder{
+  border:1px dashed var(--line);border-radius:var(--radius);padding:24px;
+  display:flex;flex-direction:column;gap:10px;background:var(--surface);
+}
+.review-placeholder .quote-ico{color:var(--line);}
+.review-placeholder .ph-line{height:10px;border-radius:4px;background:var(--surface-2);width:100%;}
+.review-placeholder .ph-line.w80{width:80%;}
+.review-placeholder .ph-line.w60{width:60%;}
+.review-placeholder .ph-foot{display:flex;align-items:center;gap:10px;margin-top:8px;}
+.review-placeholder .ph-avatar{width:34px;height:34px;border-radius:50%;background:var(--surface-2);flex:0 0 auto;}
+.review-placeholder .ph-name{height:9px;border-radius:4px;background:var(--surface-2);width:90px;}
+.review-placeholder .ph-label{
+  font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--ink-2);margin-top:2px;
+}
+
 /* ===== Privacy ===== */
 .legal .container{max-width:80ch;}
 .legal h2{font-size:1.7rem;}

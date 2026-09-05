@@ -155,6 +155,20 @@ nav.main a[aria-current="page"]{color:var(--brand);background:var(--surface-2);}
   nav.main{display:none;}
   .header-actions .btn span.long{display:none;}
 }
+/* Below ~480px the logo block + phone number + CTA no longer fit on one
+   row and force the whole page to overflow horizontally (the browser then
+   zooms the page out to compensate, which is what made the floating
+   quote pill and card buttons look misaligned on phones). Trim the header
+   so it fits without any element wrapping or shrinking unexpectedly. */
+@media (max-width:480px){
+  .site-inner{padding:10px 14px;gap:12px;}
+  .brand-mark{gap:10px;}
+  .brand-mark img{height:40px;width:40px;}
+  .brand-mark strong{font-size:1.15rem;}
+  .brand-mark > span > span{display:none;}
+  .header-actions{gap:8px;}
+  .phone-link{display:none;}
+}
 
 /* ===== Hero (with background photo) ===== */
 .hero{
@@ -422,14 +436,34 @@ footer.site ul{display:flex;flex-direction:column;gap:10px;}
 .footer-credit:hover{opacity:1;color:var(--plate-ink);}
 
 /* ===== Floating quote pill ===== */
+:root{--cookie-bar-h:0px;}
 #quote-pill{
-  position:fixed;right:20px;bottom:20px;z-index:50;
+  position:fixed;right:20px;bottom:calc(20px + var(--cookie-bar-h));z-index:50;
   display:flex;align-items:center;gap:8px;
   background:var(--brand);color:var(--brand-ink);text-decoration:none;
   padding:12px 18px;border-radius:999px;font-weight:700;font-size:.9rem;
   box-shadow:0 10px 30px -10px rgba(0,0,0,.5);
+  transition:bottom .15s ease;
 }
 #quote-pill b{font-family:var(--font-mono);}
+
+/* On mobile, full-width "В заявку" buttons on cards sit right where a wide
+   pill would land, so shrink it to a compact round badge to avoid covering them. */
+@media (max-width:640px){
+  #quote-pill{
+    right:14px;bottom:calc(14px + var(--cookie-bar-h));
+    width:50px;height:50px;padding:0;border-radius:50%;justify-content:center;gap:0;
+  }
+  #quote-pill .quote-pill-label{display:none;}
+  #quote-pill .quote-pill-ico{font-size:1.25rem;line-height:1;}
+  #quote-pill b{
+    position:absolute;top:-3px;right:-3px;
+    background:var(--brand-ink);color:var(--brand);
+    min-width:19px;height:19px;padding:0 4px;border-radius:999px;
+    display:flex;align-items:center;justify-content:center;font-size:.68rem;
+  }
+  body.has-quote-pill{padding-bottom:78px;}
+}
 
 /* ===== Cookie banner ===== */
 #cookie-bar{

@@ -112,6 +112,7 @@
     if (!pill || !pillCount) return;
     pill.hidden = selected.length === 0;
     pillCount.textContent = selected.length;
+    document.body.classList.toggle('has-quote-pill', !pill.hidden);
   }
 
   function toggle(name) {
@@ -168,13 +169,21 @@
   var COOKIE_KEY = 'promet_cookie_ack_v1';
   var bar = document.getElementById('cookie-bar');
   if (bar) {
+    /* Keep the floating quote pill above the cookie bar instead of overlapping it. */
+    var syncCookieBarHeight = function () {
+      var h = bar.hidden ? 0 : bar.offsetHeight;
+      document.documentElement.style.setProperty('--cookie-bar-h', h + 'px');
+    };
     try {
       if (!localStorage.getItem(COOKIE_KEY)) bar.hidden = false;
     } catch (e) { bar.hidden = false; }
+    syncCookieBarHeight();
+    window.addEventListener('resize', syncCookieBarHeight);
     var cookieOk = document.getElementById('cookie-ok');
     if (cookieOk) {
       cookieOk.addEventListener('click', function () {
         bar.hidden = true;
+        syncCookieBarHeight();
         try { localStorage.setItem(COOKIE_KEY, '1'); } catch (e) { /* ignore */ }
       });
     }

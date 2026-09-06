@@ -64,19 +64,18 @@
     <div class="container">
       <div class="request-shell">
         <div class="guide">
-          <h4>Что указать, чтобы ответить быстрее</h4>
+          <h4>Какую информацию необходимо сообщить, чтобы мы обработали Вашу заявку быстрее:</h4>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Стандарт (ГОСТ или DIN) и класс прочности</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Стандарт (ГОСТ или DIN), класс прочности</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Покрытие: без покрытия (окисное, пропитанное маслом), цинковое, кадмиевое, другие виды...</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Материал изделия</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Необходимую марку стали крепёжного изделия</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Нужное количество — шт., кг.</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Изготавливаем нестандартные крепёжные изделия из необходимых марок стали по вашим чертежам</li>
           </ul>
           <div class="contact-card">
             <div><span class="role">Отдел продаж</span></div>
             <a data-c="phoneHref" href="#" data-c-text="phoneDisplay"></a>
             <a data-c="mailHref" href="#" data-c-text="email"></a>
-            <div class="role">г. Пермь · 1 офис и склад</div>
+            <div class="role">г. Пермь · офис и склад</div>
           </div>
         </div>
         <form id="quote-form" novalidate>
@@ -94,7 +93,7 @@
             <textarea id="f-comment" name="comment" rows="4" placeholder="Например: болт DIN 933 М12×80, 500 шт., оцинкованный"></textarea>
           </div>
           <div class="field">
-            <label for="f-file">Файл — чертёж, спецификация (необязательно)</label>
+            <label for="f-file">Файл — чертёж, спецификация, заявка</label>
             <div class="file-upload">
               <label class="btn btn-ghost btn-small" for="f-file">📎 Загрузить файл</label>
               <input id="f-file" name="file" type="file">
@@ -106,7 +105,6 @@
             <span>Согласен(на) на обработку персональных данных для ответа на заявку — см. <a href="politika-konfidentsialnosti.html">политику конфиденциальности</a>.</span>
           </label>
           <button type="submit" class="btn btn-accent" style="width:100%;">Отправить заявку на почту</button>
-          <p class="form-note">Откроется письмо, заполненное на <span data-c="email"></span>. Если почтовый клиент не настроен — позвоните по телефону выше.</p>
           <p class="form-status" id="form-status" role="status"></p>
         </form>
       </div>

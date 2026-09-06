@@ -1,19 +1,19 @@
 /* ===== Reset & tokens ===== */
 *{box-sizing:border-box;}
 [hidden]{display:none!important;}
-html{background:#F3F8FC;}
+html{background:#EFF8FF;}
 
 :root{
-  --bg:#F3F8FC;
+  --bg:#EFF8FF;
   --surface:#FFFFFF;
-  --surface-2:#E4EEF6;
-  --ink:#0B2C42;
-  --ink-2:#43647B;
-  --line:#CBDCE9;
-  --brand:#0C5484;
+  --surface-2:#E3F3FC;
+  --ink:#14324A;
+  --ink-2:#4B7B96;
+  --line:#CFE8F5;
+  --brand:#1878B0;
   --brand-ink:#FFFFFF;
-  --brand-light:#3078A8;
-  --focus:#0C5484;
+  --brand-light:#4FA8D8;
+  --focus:#1878B0;
   --danger:#B3311C;
 
   /* fixed "steel plate" band (deep navy from the logo) — same in both themes, deliberate */

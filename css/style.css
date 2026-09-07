@@ -257,7 +257,7 @@ nav.main a[aria-current="page"]{color:var(--brand);background:var(--surface-2);}
 }
 .process-step:first-child{border-top:none;}
 .process-step::before{
-  content:counter(step,decimal-leading-zero);
+  content:counter(step,decimal);
   font-family:var(--font-mono);font-weight:600;color:var(--brand);font-size:1.1rem;
 }
 .process-step h4{margin:0 0 4px;}

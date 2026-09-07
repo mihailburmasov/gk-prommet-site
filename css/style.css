@@ -311,6 +311,7 @@ nav.main a[aria-current="page"]{color:var(--brand);background:var(--surface-2);}
   border:1px solid var(--line);border-radius:6px;padding:3px 7px;margin-top:2px;
 }
 .cat-made{font-size:.72rem;font-family:var(--font-mono);color:var(--brand);font-weight:700;margin-bottom:6px;}
+.cat-note{font-size:.82rem;color:var(--ink-2);margin-bottom:10px;}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
 .chip-sm{
   font-family:var(--font-mono);font-size:.72rem;border:1px solid var(--line);border-radius:6px;

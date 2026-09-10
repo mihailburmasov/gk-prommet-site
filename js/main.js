@@ -86,7 +86,7 @@
       var name = btn.getAttribute('data-cat');
       var on = selected.indexOf(name) !== -1;
       btn.classList.toggle('is-added', on);
-      btn.textContent = on ? '✓ В заявке' : '+ В заявку';
+      btn.textContent = 'Загрузить заявку/спецификацию';
     });
   }
 
@@ -121,8 +121,16 @@
     persist(); syncButtons(); renderTags(); renderPill();
   }
 
+  function add(name) {
+    if (selected.indexOf(name) === -1) selected.push(name);
+    persist(); syncButtons(); renderTags(); renderPill();
+  }
+
   addButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () { toggle(btn.getAttribute('data-cat')); });
+    btn.addEventListener('click', function () {
+      add(btn.getAttribute('data-cat'));
+      window.location.href = 'kontakty.html#request';
+    });
   });
 
   syncButtons(); renderTags(); renderPill();

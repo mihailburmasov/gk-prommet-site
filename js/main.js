@@ -72,8 +72,6 @@
     if (Array.isArray(stored)) selected = stored;
   } catch (e) { selected = []; }
 
-  var pill = document.getElementById('quote-pill');
-  var pillCount = document.getElementById('quote-pill-count');
   var tagsWrap = document.getElementById('quote-tags');
   var addButtons = Array.prototype.slice.call(document.querySelectorAll('.btn-add'));
 
@@ -108,22 +106,15 @@
     });
   }
 
-  function renderPill() {
-    if (!pill || !pillCount) return;
-    pill.hidden = selected.length === 0;
-    pillCount.textContent = selected.length;
-    document.body.classList.toggle('has-quote-pill', !pill.hidden);
-  }
-
   function toggle(name) {
     var i = selected.indexOf(name);
     if (i === -1) selected.push(name); else selected.splice(i, 1);
-    persist(); syncButtons(); renderTags(); renderPill();
+    persist(); syncButtons(); renderTags();
   }
 
   function add(name) {
     if (selected.indexOf(name) === -1) selected.push(name);
-    persist(); syncButtons(); renderTags(); renderPill();
+    persist(); syncButtons(); renderTags();
   }
 
   addButtons.forEach(function (btn) {
@@ -133,7 +124,7 @@
     });
   });
 
-  syncButtons(); renderTags(); renderPill();
+  syncButtons(); renderTags();
 
   /* ---- Quote form -> mailto (present on kontakty.html) ---- */
   var form = document.getElementById('quote-form');

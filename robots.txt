@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /politika-konfidentsialnosti.html
 
-Sitemap: https://mihailburmasov.github.io/gk-prommet-site/sitemap.xml
+Sitemap: https://gkprommet.ru/sitemap.xml

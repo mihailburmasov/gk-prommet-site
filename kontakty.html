@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Контакты и заявка на расчёт — ГК Проммет</title>
 <meta name="description" content="Свяжитесь с ГК «Проммет»: телефон, почта и форма заявки на расчёт цены и наличия крепежа. Офис и склад в Перми.">
-<link rel="canonical" href="https://mihailburmasov.github.io/gk-prommet-site/kontakty.html">
+<link rel="canonical" href="https://gkprommet.ru/kontakty.html">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
@@ -14,8 +14,8 @@
 <meta property="og:title" content="Контакты и заявка на расчёт — ГК Проммет">
 <meta property="og:description" content="Телефон, почта и форма заявки на расчёт цены и наличия крепежа. Офис и склад в Перми.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://mihailburmasov.github.io/gk-prommet-site/kontakty.html">
-<meta property="og:image" content="https://mihailburmasov.github.io/gk-prommet-site/assets/og-image.png">
+<meta property="og:url" content="https://gkprommet.ru/kontakty.html">
+<meta property="og:image" content="https://gkprommet.ru/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,8 +91,9 @@
             <div class="role">г. Пермь · офис и склад</div>
           </div>
         </div>
-        <form id="quote-form" novalidate>
+        <form id="quote-form" novalidate action="send.php" method="POST" enctype="multipart/form-data">
           <div class="quote-tags" id="quote-tags" aria-live="polite"></div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" hidden aria-hidden="true">
           <div class="field">
             <label for="f-name">Имя</label>
             <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Как к вам обращаться">
@@ -117,7 +118,7 @@
             <input type="checkbox" id="f-consent" name="consent" required checked>
             <span>Согласен(на) на обработку персональных данных для ответа на заявку — см. <a href="politika-konfidentsialnosti.html">политику конфиденциальности</a>.</span>
           </label>
-          <button type="submit" class="btn btn-accent" style="width:100%;">Отправить заявку на почту</button>
+          <button type="submit" class="btn btn-accent" style="width:100%;">Отправить заявку</button>
           <p class="form-status" id="form-status" role="status"></p>
         </form>
       </div>

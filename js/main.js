@@ -126,10 +126,11 @@
 
   syncButtons(); renderTags();
 
-  /* ---- Quote form -> mailto (present on kontakty.html) ---- */
+  /* ---- Quote form -> send.php (present on kontakty.html) ---- */
   var form = document.getElementById('quote-form');
   if (form) {
     var statusEl = document.getElementById('form-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
 
     var fileInput = document.getElementById('f-file');
     var fileNameEl = document.getElementById('file-upload-name');
@@ -143,7 +144,6 @@
       e.preventDefault();
       var name = form.name.value.trim();
       var phone = form.phone.value.trim();
-      var comment = form.comment.value.trim();
       var consent = form.consent.checked;
 
       if (!name || !phone) {
@@ -157,19 +157,36 @@
         return;
       }
 
-      var lines = [
-        'Имя: ' + name,
-        'Телефон: ' + phone,
-        'Группы крепежа: ' + (selected.length ? selected.join(', ') : 'см. комментарий'),
-        'Комментарий: ' + (comment || '—')
-      ];
-      var subject = 'Заявка с сайта — запрос цены и наличия';
-      var body = lines.join('\n');
-      var href = COMPANY.mailHref + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var data = new FormData(form);
+      data.set('categories', selected.length ? selected.join(', ') : '');
+      data.set('consent', consent ? '1' : '0');
 
-      statusEl.textContent = 'Открываем почтовый клиент с заполненным письмом…';
-      statusEl.className = 'form-status ok';
-      window.location.href = href;
+      statusEl.textContent = 'Отправляем заявку…';
+      statusEl.className = 'form-status';
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch('send.php', { method: 'POST', body: data })
+        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+        .then(function (res) {
+          if (res && res.ok) {
+            statusEl.textContent = res.message || 'Заявка отправлена, мы свяжемся с вами в ближайшее время.';
+            statusEl.className = 'form-status ok';
+            form.reset();
+            if (fileNameEl) fileNameEl.textContent = 'Файл не выбран';
+            selected = [];
+            persist(); syncButtons(); renderTags();
+          } else {
+            statusEl.textContent = (res && res.message) || 'Не удалось отправить заявку. Позвоните нам: ' + COMPANY.phoneDisplay;
+            statusEl.className = 'form-status err';
+          }
+        })
+        .catch(function () {
+          statusEl.textContent = 'Не удалось отправить заявку. Позвоните нам: ' + COMPANY.phoneDisplay;
+          statusEl.className = 'form-status err';
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 
